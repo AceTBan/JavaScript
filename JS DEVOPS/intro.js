@@ -72,11 +72,90 @@
 
 
 // ——————————————————————————————————————————————————————————————————————
-let noteA = 12;
-let noteB = 14;
-let moyenne = calcul(noteA,noteB);
+// let noteA = 12;
+// let noteB = 14;
+// let moyenne = calcul(noteA,noteB);
 
-function calcul(A,B){
-    return (A+B)/2;
-}
-console.log(moyenne)
+// function calcul(A,B){
+//     return (A+B)/2;
+// }
+// console.log(moyenne)
+
+
+
+
+// // ——————————————————————————————————————————————————————————————————————
+
+// //EXO createElement()
+// // ** Créer n'importe quel element HTML - createElement - innerHTML 
+// // TODO 1: récupérer le titre dans une variable monTitre
+// // TODO 2: récupérer le paragraphe dans une variable lesTxt ou txt
+// // TODO 3: Créer une ƒ° ajoutTexte() qui prend un pseudo et duTxt en param
+// // TODO 3-1: Dans cette ƒ°, dans une variable nouveauTxt, on crée un  élément <p>
+// // TODO 3-2: ensuite on va accèder à la propriété innerHTML de nouveauTxt,on lui assigne nos variables pseudo et duTxt
+// // TODO 3-3: on place dans la page web nouveauTxt
+// // TODO 4: En dehors de la ƒ°, on utilise au moins 1 fois la fonction
+
+
+// function ajoutTexte(nom,prenom){
+//     const nouveauTxt = document.createElement('p');
+//     nouveauTxt.innerText = nom + " " + prenom;
+//     document.body.appendChild(nouveauTxt);
+// }
+// ajoutTexte("jean","Michel")
+
+
+
+
+
+
+// ** addEventListener - classList.add() - classList.remove() - classList.toggle()
+// En CSS on crée une classe maCouleur (vous modifiez ce que vous voulez)
+// TODO 1: récupérer le titre dans une variable leTitre
+// TODO 2: récupérer tous les liens dans une variable lesLiens
+// TODO 3-1: Sur le 1er lien placer un addEventListener qui écoute le "click" et éxecute une fonction
+// TODO 3-2: Dans cette fonction on ajoute la classe "maCouleur" sur titre
+// TODO 4-1: Sur le 2e lien placer un addEventListener qui écoute le "click" et éxecute une fonction
+// TODO 4-2: Dans cette fonction on supprime la classe "maCouleur" sur titre
+// TODO 4-1: Sur le 3e lien placer un addEventListener qui écoute le "click" et éxecute une fonction
+// TODO 4-2: Dans cette fonction on toggle la classe "maCouleur" sur titre
+
+
+
+
+const titre = document.querySelector("h1");
+const lien = document.querySelectorAll("a");
+
+lien[0].addEventListener("click", function(){
+    titre.classList.add("maCouleur")
+});    
+
+lien[1].addEventListener("click", function(){
+    titre.classList.remove("maCouleur")
+});
+lien[2].addEventListener("click", function(){
+    titre.classList.toggle("maCouleur")
+});
+
+
+
+
+// EXO Dom addEventListener + mouseout
+// ** addEventListener - "mouseout" - display
+// EN CSS le titre H1 à un display à none
+// TODO 1: Dans une variable monTitre, récupérer tous le titre h1
+// TODO 2: Sur document, placer un addEventListener qui écoute "mouseout" et qui execute une fonction
+// TODO 3: dans cette fonction, on va modifier dans le style de monTitre le display que l'on met à "block"
+
+
+
+
+const monTitre = document.querySelector("h1");
+
+document.addEventListener("mouseout", function() { 
+    monTitre.style.display = "block";
+});
+
+
+
+

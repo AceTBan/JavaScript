@@ -123,19 +123,19 @@
 
 
 
-const titre = document.querySelector("h1");
-const lien = document.querySelectorAll("a");
+// const titre = document.querySelector("h1");
+// const lien = document.querySelectorAll("a");
 
-lien[0].addEventListener("click", function(){
-    titre.classList.add("maCouleur")
-});    
+// lien[0].addEventListener("click", function(){
+//     titre.classList.add("maCouleur")
+// });    
 
-lien[1].addEventListener("click", function(){
-    titre.classList.remove("maCouleur")
-});
-lien[2].addEventListener("click", function(){
-    titre.classList.toggle("maCouleur")
-});
+// lien[1].addEventListener("click", function(){
+//     titre.classList.remove("maCouleur")
+// });
+// lien[2].addEventListener("click", function(){
+//     titre.classList.toggle("maCouleur")
+// });
 
 
 
@@ -150,11 +150,91 @@ lien[2].addEventListener("click", function(){
 
 
 
-const monTitre = document.querySelector("h1");
+// const monTitre = document.querySelector("h1");
 
-document.addEventListener("mouseout", function() { 
-    monTitre.style.display = "block";
-});
+// document.addEventListener("mouseout", function() { 
+//     monTitre.style.display = "block";
+// });
+
+
+
+
+// EXO Event Keypress
+// ** addEventListener - capter un evènement clavier - "keypress"
+// TODO 1: Dans une variable leTitre, récupérer tous le titre h1
+// TODO 2: Sur document, placer un addEventListener qui écoute "keypress" et qui execute une fonction qui a event en paramètre
+// TODO 3: dans cette fonction, faire un console log de event
+// TODO 4: Explorez la console du navigateur pour trouver la propriété dans laquelle est stocké ce que l'on écrit dans l'input
+// TODO 5: dans le innerHtml de leTire on cumule les lettres tapé dans l'input
+
+
+
+
+
+//   const leTitre = document.querySelector("h2");
+// const monInput = document.querySelector('input');
+// monInput.addEventListener("keypress", function(event) {
+//     console.log(event.key);
+//     // console.log(event.key);
+//     leTitre.innerText += event.key;
+// });
+
+
+
+
+// Set UP exo desactiver button 
+// 1 page html avec 1 textArea, et un bouton
+// ** addEventListener - "keyup" - disabled - value - length
+// TODO 1: récupérer le textarea dans une variable txt
+// TODO 2: récupérer le button dans une variable btn
+// TODO 3-1: Sur txt placer un addEventListener qui écoute les touches clavier et éxecute une fonction
+// TODO 3-2: Dans cette fonction, si ce qu'on tape dans l'input dépasse 5 caractères alors on désactive le button
+
+
+// let area = document.querySelector("textarea");
+// let button = document.querySelector("button");
+// area.addEventListener("keyup",function () {
+//   if (area.value.length >= 5) {
+//     button.disabled = true; 
+//   } else {
+//     button.disabled = false;
+//   }
+// })
+
+
+
+
+// ** setTimeout() - innerHtml - opacity - backgroundColor
+// TODO 1: Dans une variable monTitre, récupérer le titre h1
+// TODO 2: on execute le fonction setTimeout() qui prend 2 paramètres: une fonction et un nombre (les miliseconde)
+// TODO 3: dans la fonction en param de setTimeout(),modifier dans le style de monTitre l'opacité  que l'on met à 1
+// TODO 3-2: modifier dans le style de monTitre le background color  que l'on met à (couleur au choix)
+// TODO: 3-3: assigner une chaine de caractères (au choix) au innerHTML de monTitre
+
+
+
+
+// const monTitre = document.querySelector("h1");
+
+// setTimeout(function() {
+//     monTitre.textContent = "SALUT C'EST COOL";
+//     // monTitre.innerHTML = "SALUT C'EST COOL";
+//     monTitre.style.opacity = 1;
+//     document.body.style.background = "royalblue";
+// }, 2000)
+
+
+
+
+// ** Executer 1 script ttes les X sec - addEventListener - click - innerHTML
+// TODO 1: récupérer le titre dans une variable monTitre
+// TODO 2: créer une variable timer initialisée à 3
+// TODO 3-1: sur monTitre on place un addEventListener qui surveille le click et qui exécute une fonction
+// TODO 3-2: Dans cette fonction, créer une variable countDown à laquelle on assigne la fonction setInterval()
+// TODO 3-3: setInterval() prend en 1er param, une fonction et en 2e param 200 ms
+// TODO 4-1: Dans la fonction de setInterval(), SI timer est supperieur à 0, on assigne au innerHTML de monTitre, timer
+// TODO 4-2: SINON, on assigne au innerHTML de monTitre, "GO GO GO"
+// TODO 5: Après ces conditions, on décrémente timer
 
 
 

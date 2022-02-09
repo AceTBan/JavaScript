@@ -239,3 +239,20 @@
 
 
 
+const monTitre = document.querySelector("h1");
+let timer = 3;
+monTitre.addEventListener("click", function(){
+    const countDown = setInterval(function() {
+        // setInterval(function() {
+
+        if(timer > 0) {
+            monTitre.innerHTML = timer;
+        }
+        else{
+            monTitre.textContent = "GO GO GO";
+            clearInterval(countDown);
+        }
+        console.log(timer);
+        timer--;
+    },1000);
+})

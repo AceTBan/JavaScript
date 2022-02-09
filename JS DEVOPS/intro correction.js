@@ -467,3 +467,22 @@ monTitre.addEventListener("click", function(){
         timer--;
     },1000);
 })
+
+
+// EXEMPLE d'utilisation de map sur les tableaux
+
+
+let monTab = [1,2,3,4,5];
+console.log(monTab);
+
+//Map va prendre une fonction (avec ou sans param),
+//pour parcourir le tableau automatiquement
+//Lors du parcours map va stocker temporairement chaque 
+//case dans la variable uneCase
+let plus = monTab.map((uneCase) => uneCase *2);
+
+//Ici on fait juste que remplacer donc pas besoin de stocker temporairement
+//chaque case dans une variable
+let remplace = monTab.map(() => 5);
+console.log(remplace);
+console.log(plus);

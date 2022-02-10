@@ -486,3 +486,43 @@ let plus = monTab.map((uneCase) => uneCase *2);
 let remplace = monTab.map(() => 5);
 console.log(remplace);
 console.log(plus);
+
+
+
+
+// preventDefault - addEventListener - 
+const monForm = document.querySelector("form");
+
+monForm.addEventListener("submit", function(event){
+    event.preventDefault();
+    console.log("OK");
+    console.log(event)
+    monForm.reset();
+});
+
+
+
+
+//On récupère TOUS les <p>
+const lesTxt = document.body.getElementsByTagName("p");
+console.log(lesTxt);
+// On transforme le HTMLCollection(qui contient tous nos <p>) en Array classique
+const textesTab = Array.from(lesTxt);
+console.log(textesTab);
+//On utilise une variable temporaire uneCase pour que map stock chaque <P> dans
+//Cette variable uneCase, on peut s'en servir pour modifier le innerHtml
+textesTab.map(uneCase => uneCase.innerHTML = "LOL JE SUIS HACKERMAN" );
+
+// textesTab.map((x) => x.style.color = "red");
+
+
+textesTab.map(function(x,i){
+    x.style.color = "red";
+    console.log(i)
+});
+
+console.log(textesTab);
+//Bonus : utilisation de map pour placer un addEventListener sur chaque <p>
+textesTab.map(toto => toto.addEventListener('click',function(){
+    console.log("SUPER CA CLICK")
+}));

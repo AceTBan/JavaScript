@@ -239,20 +239,44 @@
 
 
 
-const monTitre = document.querySelector("h1");
-let timer = 3;
-monTitre.addEventListener("click", function(){
-    const countDown = setInterval(function() {
-        // setInterval(function() {
+// const monTitre = document.querySelector("h1");
+// let timer = 3;
+// monTitre.addEventListener("click", function(){
+//     const countDown = setInterval(function() {
+//         // setInterval(function() {
 
-        if(timer > 0) {
-            monTitre.innerHTML = timer;
-        }
-        else{
-            monTitre.textContent = "GO GO GO";
-            clearInterval(countDown);
-        }
-        console.log(timer);
-        timer--;
-    },1000);
-})
+//         if(timer > 0) {
+//             monTitre.innerHTML = timer;
+//         }
+//         else{
+//             monTitre.textContent = "GO GO GO";
+//             clearInterval(countDown);
+//         }
+//         console.log(timer);
+//         timer--;
+//     },1000);
+// })
+
+
+
+
+// ** preventDefault - addEventListener - "submit" - form.reset()
+// Setup HTML : 1 page avec 1 form qui contient 1 input type text et button type submit
+// TODO 1: récupérer le formulaire dans une variable monForm
+// TODO 2-1: sur monForm on place un addEventListener qui écoute "submit" et qui exécute une fonction qui a event en paramètre
+// TODO 2-2: Dans cette fonction, sur event on utilise la fonction preventDefault()
+// TODO 3-2: Puis on console log event
+// TODO 3-3 : sur monForm on utilise la fonction .reset() (modifié)
+
+
+
+
+
+
+const monForm = document.querySelector('from');
+monForm.addEventListener("submit", function(event)){
+    event.preventDefault();
+    console.log("ok");
+    console.log(event);
+    monForm.reset();
+}

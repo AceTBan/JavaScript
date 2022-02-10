@@ -294,10 +294,99 @@
 
 
 
-let lesImages = document.body.querySelectorAll("img");
-let tabImg = Array.from(lesImages);
-tabImg.map(function(uneImage,i){
-    uneImage.addEventListener("load",function(){
-        console.log(i);
-    });
+// let lesImages = document.body.querySelectorAll("img");
+// let tabImg = Array.from(lesImages);
+// tabImg.map(function(uneImage,i){
+//     uneImage.addEventListener("load",function(){
+//         console.log(i);
+//     });
+// });
+
+
+
+
+// ** addEventListener - capter un évènement "click" - coord x - coord y
+// Setup Html : On a une page avec le body vide (on garde juste le script js)
+
+// TODO 1: sur document, placer un addEventListener qui écoute le "click" et éxecute une fonction qui a unEvent en paramètre
+// TODO 2: Dans cette fonction on console log unEvent 
+// TODO 3: à partir du console log retrouver les propriétés de unEvent qui correspondent au coordonnées du click
+// TODO 4: Tjrs dans la Fonction, dans une variable monImg, créer une img html
+// TODO 5: Ensuite, modifier l'attribut src de monImg (url de l'img au choix)
+// TODO 6: sur monImg, modifier dans style, la position en "absolute"
+// TODO 7: sur monImg, modifier dans style, le left, on assigne la coordonnées x du click
+// TODO 8: sur monImg, modifier dans style, le top, on assigne la coordonnées y du click
+// TODO 9: placer monImg dans la page (modifié)
+
+
+
+
+
+// document.addEventListener("click", function(unEvent) {
+//     console.log(unEvent);
+//     console.log("Coord X",unEvent.x, "-", "Coord Y:", unEvent.y);
+//     const monImg = document.createElement("img");
+//     const taille = 90;
+//     monImg.setAttribute
+//         ("src",`https://www.loremflickr.com/${taille}/${taille}/`);
+//             monImg.style.position = "absolute";
+//             monImg.style.left = unEvent.x - taille /2 + "px";
+//             monImg.style.top = unEvent.y - taille /2 + "px";
+//             document.body.appendChild(monImg);
+// });
+
+
+
+
+// ** addEventListener - capter un évènement "scroll" - scrollHeight  - innerHeight - scrollY
+// TODO 1: Dans une variable laBar, récupérer la div qui possède la classe .bar
+// TODO 2: Sur document, placer un addEventListener qui écoute "scroll" et execute une fonction
+// TODO 3: dans cette fonction, on console log document.body.scrollHeight (la hauteur de page), innerHeight (hauteur de l'affichage) et scrollY (la position du scroll)
+// TODO 4: Ensuite, dans une variable scrollMax, on soustrait à document.body.scrollHeight, innnerHeight
+// TODO 5: Dans une variable onEstOu, on fait un pourcentage de scrollY sur scrollMax
+// TODO 6: Modifier dans le style de laBar, la width en lui assignant onEstOu en "%" 
+
+
+
+
+// const laBar = document.querySelector(".bar");
+
+// addEventListener("scroll", function(event) {
+//     console.log(event);
+// const scrollMax = document.body.scrollHeight - innerHeight;
+// const onEstOu = scrollY / scrollMax * 100;
+// laBar.style.width = onEstOu + "%";
+//     console.log(`
+//     Hauteur page : ${document.body.scrollHeight}
+//     Hauteur affichage : ${innerHeight}
+//     Scroll Position : ${scrollY}
+//     pourcentage de scroll :${onEstOu} %`);
+// });
+
+
+
+
+// ** addEventListener - capter un evènement clavier - "keypress" - array.includes()
+// TODO 1: Dans une variable leTexte, récupérer l'input
+// TODO 2: Une variable txtTab initialisée avec un tableau vide
+// TODO 3: Une variable voyelles, un tableau contenant toutes les voyelles aeiouy
+// TODO 4: sur leText placer un addEventListener qui écoute "keypress" et execute une fonction qui a unEvent en paramètre
+// TODO 5-1: Dans cette fonction, on stock dans une variable uneTouche ce que tape l'utilisateur au clavier
+// TODO 5-2: Ensuite, un if vérifier l'inverse de : voyelles qui inclut uneTouche
+// TODO 5-3: Si cette condition est remplie alors ajouter uneTouche au tablau txt
+// TODO 6-1: Hors du If et toujours dans le addEventListener, console log de txt sur quoi on utilise la fonction .join()
+// TODO 6-2: En paramètre de join() on passe "--"
+
+
+
+
+const leTexte = document.querySelector("input");
+const txt = [];
+const voyelles = ["a","e","i","o","u","y"];
+leTexte.addEventListener("keypress",function(unEvent){
+    const uneTouche = unEvent.key;
+    if (!voyelles.includes(uneTouche)){
+        txt.push(uneTouche);
+    }
+    console.log(txt.join("-"));
 });

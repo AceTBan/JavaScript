@@ -526,3 +526,109 @@ console.log(textesTab);
 textesTab.map(toto => toto.addEventListener('click',function(){
     console.log("SUPER CA CLICK")
 }));
+
+
+
+
+// ** addEventListener - load
+
+
+
+
+let lesImages = document.querySelectorAll(`img`);
+let tabImg = Array.from(lesImages);
+tabImg.map(function (uneImage, index) {
+    uneImage.addEventListener('load', function () {
+        // console.log('Image number : ' + index + 'Finished image loading.');
+        console.log(`Image number : ${index} – Finished image loading.`);
+    });
+});
+
+
+
+
+// addEventListener  capter un évènement click coord x coord y 
+
+
+
+
+//Dans toute la page on reagit au click, on veut capter cet event.
+document.addEventListener("click", function(unEvent) {
+  //On concole log l'event que l'on capte pour voir si des propriétés 
+  //peuvent nous interresser
+  console.log(unEvent);
+  //on console log les propriétés X et Y du click (clientX, clientY)
+  console.log("Coord X",unEvent.x, "-", "Coord Y:", unEvent.y);
+  //Ensuite on va créer une image 
+  const monImg = document.createElement("img");
+  const taille = 90;
+  //Puis on va modifier l'attribut SRC de l'image, pour lui asisgner 
+  //L'url d'une image de notre choix
+  monImg.setAttribute
+  //Optimisation : avec la variable taille dans l'url
+      ("src",`https://www.placecage.com/${taille}/${taille}/`);
+          //Puis on change le type de position (absolute ca se place ou on veut dans la page)
+          monImg.style.position = "absolute";
+          //pour opti le centrage, on soustrait la moitié de la taille de l"img
+          monImg.style.left = unEvent.x - taille /2 + "px";
+          monImg.style.top = unEvent.y - taille /2 + "px";
+          //On oubli pas de placer l'image dns la page
+          document.body.appendChild(monImg);
+});
+
+
+
+
+// ** addEventListener - capter un évènement "scroll" - scrollHeight  - innerHeight - scrollY
+
+
+
+
+//On stock la div de laBar
+const laBar = document.querySelector(".bar");
+
+//On va réagir quand le user scroll dans la page
+addEventListener("scroll", function(event) {
+    console.log(event);
+    //Le scrollMax = hauteur de la page - hauteur de affichage
+const scrollMax = document.body.scrollHeight - innerHeight;
+// On fait un pourcentage du scroll de l'utilisateur
+const onEstOu = scrollY / scrollMax * 100;
+//Enfin on assigne ce pourcentage de scroll
+//à la width(%) du style de la bar.
+laBar.style.width = onEstOu + "%";
+    console.log(`
+    Hauteur page : ${document.body.scrollHeight}
+    Hauteur affichage : ${innerHeight}
+    Scroll Position : ${scrollY}
+    pourcentage de scroll :${onEstOu} %`);
+});
+
+
+
+
+// ** addEventListener - capter un evènement clavier - "keypress" - array.includes()
+
+
+
+
+
+const leTexte = document.querySelector("input");
+//Dans ce tab on rangera les lettres tapée (sans les voyelles)
+const txt = [];
+const voyelles = ["a","e","i","o","u","y"];
+
+leTexte.addEventListener("keypress", function(unEvent){
+    // console.log(unEvent)
+    const uneTouche = unEvent.key;
+    //Si uneTouche n'est pas incluse dans le tab des voyelle
+    //Alors on range uneTouche dans le tab txt via push
+    if(!voyelles.includes(uneTouche)) {
+        txt.push(uneTouche);
+    }
+    console.log(txt.join("-"));
+});
+
+
+
+

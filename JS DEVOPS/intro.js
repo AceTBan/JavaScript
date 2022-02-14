@@ -380,13 +380,169 @@
 
 
 
-const leTexte = document.querySelector("input");
-const txt = [];
-const voyelles = ["a","e","i","o","u","y"];
-leTexte.addEventListener("keypress",function(unEvent){
-    const uneTouche = unEvent.key;
-    if (!voyelles.includes(uneTouche)){
-        txt.push(uneTouche);
-    }
-    console.log(txt.join("-"));
-});
+// const leTexte = document.querySelector("input");
+// const txt = [];
+// const voyelles = ["a","e","i","o","u","y"];
+// leTexte.addEventListener("keypress",function(unEvent){
+//     const uneTouche = unEvent.key;
+//     if (!voyelles.includes(uneTouche)){
+//         txt.push(uneTouche);
+//     }
+//     console.log(txt.join("-"));
+// });
+
+
+
+
+// Mino Exo (échange de cartes): 
+// On a une variable maCarte dans laquelle on stock le nom d'un pokémon 
+
+// On a une variable taCarte dans laquelle on stock le nom d'un autre pokémon
+
+// Faire en sorte d'échanger  le contenu des 2 variables
+
+
+
+
+// let maCarte = "Phyllali" ;
+// let taCarte = "Lockpin" ;
+// [maCarte, taCarte] = [taCarte, maCarte];
+// console.log("ta carte est " + taCarte);
+// console.log("ma carte est " + maCarte);
+
+
+
+
+// (JS) CLASS - IMC
+// °Enoncé
+// Créer un programme pour Calculer l'IMC (indice de masse corporelle)
+// °TODO
+// - créer une classe Imc avec un constructeur qui recevra un nom, un poids, une taille. Dans cette classe on doit aussi avoir une donnée Imc à laquelle on assigne la fonction calculImc();
+// - Créer la fonction de calcul de l'Imc, qui retourne le résultat du calcul à 2 nombres après la virgule 
+// - Créer la fonction d'affichache display, elle a pour rôle d'afficher en console, le nom de la personne, son poids, sa taille et son Imc dans une phrase.
+// - Créer un tableau nommé list
+// - Dans cette list créer plusieur instances de la classe Imc en injectant des données dans le constructeur comme ceci : new Imc ("Sébastien Chabal",135,1,89);
+// - Trouver un moyen de parcourir tous les éléments dans list, sur chaque élément on utilisera la fonction display()
+
+
+
+
+// class Imc {
+
+//     constructor(nom, poids, taille){
+
+//         this.nom = nom;
+//         this.poids = poids;
+//         this.taille = taille;
+//         this.imc = this.calculImc(); 
+//     }
+//     calculImc(){
+//         return (this.poids/(this.taille ** 2)).toFixed(2);
+//     }
+//     display(){
+//         console.log
+//         (this.nom + " (" + this.poids + " kg, " + this.taille + " M) a un IMC de: " + this.imc);    }
+// }
+
+// let list = [
+// new Imc("Sébastien Chabal",135,1.89),
+// new Imc("Escaladeuse Ultra svelte",45,1.54)
+// ];
+
+// list.forEach(uneCase => uneCase.display());
+
+
+
+
+// (JS) POO - Ma petite Entreprise
+// ° Enoncé
+// Gérer une PME
+// °CDC
+// Un salarié = nom, prénom, age, salaire mensuel
+// Il est payé sur N mois.
+// en plus il y a XXX de charge
+// Une pme = nom, une équipe de salariés
+// Elle a des revenus dus a ses ventes R
+// mais aussi:
+// - des frais fixes FF (impôts, ...)
+// - des frais d'achat de matériel FA
+// °TODO
+// - créer une classe Pme & une classe Employee
+// - Utiliser des fonctions
+// - Faire le billan annuel de l'entreprise et l'afficher en console
+// °Détails
+// - 3 salariés qui gagnent par mois: 2000, 3000, 4000
+// - R = 300000
+// - FF = 20000
+// - FA = 50000
+// - N = 12
+// - XXX = 90%
+
+
+
+
+// class Employee {
+//     constructor(nom, prenom, age, salaireMensuel) {
+//     this._nom = nom;    
+//     this._prenom = prenom;
+//     this._age = age;
+//     this._salaireMensuel = salaireMensuel;
+//     this._cout = this.calculCout();
+// }
+
+// // me servira à passer le cout d 1 employé dans la classe PME
+// getCout() {
+//     return this._cout;
+// }
+
+// calculCout() {    
+//     const NB_MOIS_SAL = 12; 
+//     const LA_TAXE = 0.9;     
+//     return this._salaireMensuel * NB_MOIS_SAL * (1 + LA_TAXE);
+// }
+// }
+
+// class Pme {
+// constructor(nom, equipe, ventes, coutsFixes, achats) {
+//     this._nom = nom;
+//     this._equipe = equipe;
+//     this._cout = coutsFixes + achats;
+//     this._ventes = ventes;
+//     this._bilan = 0;    
+// }
+
+// bilanCalculed () {        
+//     let cumulEquipe = 0;
+//     console.log(`${this._nom} : Cout Initial : ${this._cout}`);
+
+//     for (let unSalarie of this._equipe){ 
+//         cumulEquipe += unSalarie.getCout();
+//         }
+
+//     console.log(`${this._nom} : Cout Total Equipe : ${cumulEquipe}`);
+//     this._cout += cumulEquipe;
+//     console.log(`${this._nom} : VENTES : ${this._ventes}`);
+//     this._bilan = this._ventes - this._cout;
+//     console.log(`${this._nom} : BILAN : ${this._bilan}`);
+// }
+// }
+
+
+// // Scénario
+// const pme = new Pme (
+//     //Le nom entreprise
+//         "Ma Petite Entreprise - ", 
+//         //L'equipe de salariés
+//         [new Employee ("Duval", "Paul", 30, 2000),
+//         new Employee ("Durand", "Alain", 40, 3000),
+//         new Employee ("Dois", "Sylvia", 50, 4000),],
+//         //le revenu , frais fixe, frais d'achat
+//         300000,
+//         20000,
+//         50000);
+        
+//     pme.bilanCalculed();
+
+
+
+

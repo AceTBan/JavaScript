@@ -823,3 +823,168 @@ const pme = new Pme (
     20000,
     50000);
 pme.bilanCalculed();
+
+
+
+
+
+// Count API
+
+
+
+
+const counter = document.getElementById('counter');
+//de base une ƒ° => est anonyme, astuce pour désanonymiser, on la stocke dans une variable
+const majCounter = async () => {
+    //Data va récup Toutes les données de l'api
+    const data = await fetch('https://api.countapi.xyz/hit/sltcava/visites');
+    console.log(data);
+    //Plutot que de Travailler sur la réponse, on va la transformé pour 
+    //qu'elle deviennt un OBJET JS (+ pratique)
+    const dataTransformed = await data.json();
+    console.log(dataTransformed);
+    counter.innerText = dataTransformed.value;
+    counter.style.filter = 'blur(0)';
+}
+majCounter();
+
+
+
+
+// ——————————————————————————————————————————————————————————————————————
+
+
+
+
+
+// TEST pour récuperer 1 data
+const leParag = document.getElementById('ici');
+
+async function  afficherUser (){
+const lesData = await fetch('https://adrardev.fr/task/api/task.php?user');
+console.log(lesData);
+const lesDataTransformed = await lesData.json();
+//Console log pour voir les data et les propriétés
+console.log(lesDataTransformed);
+//Dans le innerHTML du <p> j'affiche l'id et le name du permier elements de ce que me renvoi l'api
+leParag.innerText = lesDataTransformed[0].id_user + " "+ lesDataTransformed[0].name_user;
+
+
+// BOUCLE parcourrir le tablo et créer des parapgraphe pour chaque data 
+for(const uneCase of lesDataTransformed){
+    let unParagraphe = document.createElement('p');
+    unParagraphe.innerText = uneCase.id_user + ':' +uneCase.name_user;
+    document.body.append(unParagraphe)
+}
+
+}
+
+afficherUser();
+
+
+
+
+//Exemple de la fonction qui affiche le counter de l'API
+//Avec système de gestion d'exceptions en utilisant try {....} et catch{...}
+async function leCounter() {
+  try {
+    let response = await fetch('https://api.countapi.xyz/hit/sltcava/visites');
+    let apiData = await response.json();
+    lol;
+    console.log(apiData);
+  } catch(err) {
+    // catches errors both in fetch and response.json
+    console.error(err);
+  }
+}
+
+leCounter();
+
+
+
+// appli de la bank
+
+class CompteBancaire {
+  constructor(titulaire){
+      this.titulaire = titulaire; // In mode
+      this.solde = 0 //Out Mode
+  }
+
+  crediter(montant){
+      this.solde += montant;
+      console.log(`Ajout de ${montant} pour le compte de ${this.titulaire}`)
+  }
+
+  retirer(montant){
+      try{
+          if(this.solde < montant){
+              throw this.titulaire + "retrait de : " + montant + " REFUSED avec un solde de" + this.solde;
+          }
+          this.solde -= montant;
+          // this.solde = this.solde - montant;
+          console.log("retrait de " + montant + 'pour' + this.titulaire )
+      }
+      catch(error){
+          console.log("Mon error custom ---> "+error)
+      }
+  }
+
+  affichage(){
+      return 'titulaire : ' + this.titulaire + 'solde : ' + this.solde;
+  }
+
+  virer(montant, personne){
+      personne.crediter(montant);
+      //ici le this va récup l'instance sur laquelle on utilise la fonciton virer
+      this.retirer(montant);
+  }
+}
+// LE scénar : 
+const lesComptes = {
+  "Alex" : new CompteBancaire("Alex"),
+  "Clovis" : new CompteBancaire("Clovis"),
+  "Marco" : new CompteBancaire("Marco"),
+}  
+// Boucle pour créediter
+for(let element in lesComptes){
+  lesComptes[element].crediter(1000)
+}
+lesComptes['Alex'].retirer(100);
+
+lesComptes['Marco'].virer(300, lesComptes['Clovis']);
+
+lesComptes['Alex'].retirer(1200);
+
+// Boucle pour décrire
+for(let unTruc in lesComptes){
+  lesComptes[unTruc].affichage()
+}
+
+
+
+// Regex pour tester le mail
+
+const login = document.querySelector("#login");
+const password = document.querySelector("#password");
+const resultatPassword = document.querySelector("#resultatPassword");
+
+login.addEventListener("keyup", function(){
+    //maRegex, is a regex for the login/mail input
+    //dans ce cas, pour un email : 
+    //Avant le @ : [a-z0-9._-], on accepte les lettre de a à z, les chiffres de 0 à 9
+    //Ainsi que le ".", le "-", le "_"
+    //Après le @ : [a-z0-9._-], on accepte les lettre de a à z, les chiffres de 0 à 9
+    //Ainsi que le ".", le "-", le "_"
+    //Après le "." : +\.[a-z]{2,6}, on accepte les lettre de a à z, on accepte entre 2 et 6 lettre après 
+    // le . de l'adresse mail (.fr, .com, etc...)
+    let maRegex = /^[a-z0-9._-]+@[a-z0-9._-]+\.[a-z]{2,6}$/;
+    //Ensuite on test notre regex avec la value de l'input login
+    //Si le test fail alors on met le bgColor de l'input en rouge, sinon c'est good le bgColor est en vert
+    if(!maRegex.test(login.value)){
+        console.log(login.value);
+        login.style.backgroundColor = "red";
+    }
+    else{
+        login.style.backgroundColor = "green";
+    }
+});

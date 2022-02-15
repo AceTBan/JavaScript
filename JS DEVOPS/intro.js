@@ -546,3 +546,117 @@
 
 
 
+
+// ** contacter une api - fetch() - async - await
+// TODO 1: récupérer le titre h2 dans une variable counter
+// TODO 2-1: créer une variable majCounter à laquelle on assigne une fonction fléchée
+// TODO 2-2: dans la F =>, créer une variable data à laquelle on assigne la fonction fetch()
+// TODO 2-3: fetch(), prend en param l'Url de l'API
+// TODO 3-1: Tjrs dans la F =>,créer une variable count à laquelle on assigne data
+// TODO 3-2: sur la variable data on utilise la fonction .json()
+// TODO 4-1: Tjrs dans la F =>,au InnerHTML de counter, assigner la value de count
+// TODO 4-2: remmettre le filter de counter en "blur(0)"
+// TODO 5: on éxecute notre fonction majCounter 
+// TODO 6-1: avant les () de la F => on rajoute le mot clé async
+// TODO 6-2: avant le fetch() on rajoute le mot clé await
+// TODO 6-3: avant le data.json() on rajoute le mot clé await
+
+
+
+
+
+// const counter = document.getElementById("counter");
+// const majCounter = async () =>{
+//     const data = await fetch("https://api.countapi.xyz/hit/azertyui/visites")
+//     const count = await data.json();
+//     counter.innerHTML = count.value;
+//     counter.style.filter = "blur(0)";
+//     }
+// majCounter();
+
+
+
+// Exo API 2 le retour : 
+// En gardant la base de l'exo précédent, essayer de contacter et afficher les données des ≠ API
+
+
+// // TEST pour récuperer 1 data
+// const leParag = document.getElementById('ici');
+
+// async function  afficherUser (){
+// const lesData = await fetch('https://adrardev.fr/task/api/task.php?user');
+// console.log(lesData);
+// const lesDataTransformed = await lesData.json();
+// //Console log pour voir les data et les propriétés
+// console.log(lesDataTransformed);
+// //Dans le innerHTML du <p> j'affiche l'id et le name du permier elements de ce que me renvoi l'api
+// leParag.innerText = lesDataTransformed[0].id_user + " "+ lesDataTransformed[0].name_user;
+
+
+// // BOUCLE parcourrir le tablo et créer des parapgraphe pour chaque data 
+// for(const uneCase of lesDataTransformed){
+//     let unParagraphe = document.createElement('p');
+//     unParagraphe.innerText = uneCase.id_user + ':' +uneCase.name_user;
+//     document.body.append(unParagraphe)
+// }
+
+// }
+
+// afficherUser()
+
+
+
+
+// EXO POO CLASSE : Les comptes bancaire 
+
+// ## Exception+POO 
+
+// ## Enoncé gérer des comptes en banques 
+
+// ## Consignes
+//  - créer une classe CompteBancaire avec les méthodes de crédit, de retrait et de visualisation de l'état du compte
+// on doit pouvoir également faire un virement d'un membre à un autre 
+// - générer une exception sur le prélèvement / retrait interdit (qui dépasse le solde)
+
+//  ## Détails 
+
+// Faire un scénario avec gestion de 3 comptes crédités à 1000 chacun (Alex, Clovis, Marco), puis Alex retire 100, puis Marco fait un virement de 300 à Clovis... Enfin Alex tente un retrait de 1200. Afficher tous les soldes finaux. Ces comptes sont placés dans un tableau associatif de clients. les sorties sont dans la console
+
+// Set up de l'objet lesComptes pour ensuite faire le scénario
+
+
+// ——————————————————————————————————————————————————————————————————————
+//
+// 
+// ——————————————————————————————————————————————————————————————————————
+
+// EXO REGEX pt1
+// Test du Mail 
+
+// Définir une regex pour le mail  : 
+// avant le @ : 
+// on accepte tous les caractères de a à  z, de 0 à 9 ainsi que le . , 
+// le   (underscore)
+// le - (tiret du 6)
+
+// après le @ : 
+// on accepte tous les caractères de a à  z, de 0 à 9 ainsi que le . , 
+// le   (underscore)
+// le - (tiret du 6)
+
+// après le . (.fr, .com etc...)
+// on accepte tous les caractères de a à z 
+// on accepte entre 2 et 6 caractères
+
+// On peut utiliser la ƒ° test()
+
+// mettre en place un programme JS qui va tester si notre adresse mail est valide 
+// on va surveiller l'evenement keyup
+// Si l'adresse mail est OK alors on change le BGColor de l'input en VERT
+
+// Sinon 
+// on change le BGColor de l'input en VERT
+
+
+
+

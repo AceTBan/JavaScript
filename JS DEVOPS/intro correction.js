@@ -988,3 +988,50 @@ login.addEventListener("keyup", function(){
         login.style.backgroundColor = "green";
     }
 });
+
+
+
+
+// regex du password
+
+
+
+
+password.addEventListener("keyup",function(){
+  //carDecimal = regex pour les décimaux
+  let carDecimal = /\d/;
+  //CarSpeciaux = regex dans laquelle j'ai mis les caractères spéciaux que je veux avoir 
+  // le $, le &, le @, le !, le ?
+  let carSpeciaux = /[$&@!?]/;
+  //erreur: dans ca on va cumuler les message d'erreur que l'on affichera dans la div en dessous du fromulaire
+  let erreur = "";
+
+  if(password.value.length < 6){
+      erreur += "<li>Le mot de passe est trop short</li>";
+  }
+  else if(password.value.length > 8){
+      erreur += "<li>Le mot de passe est trop Long</li>";
+  }
+  //Si le password ne match pas de caractère decimal, on indique que le password doit contenir un chiffre
+  if(!password.value.match(carDecimal)){
+      erreur +="<li>Doit contenir un chiffre</li>";
+  }
+  //Idem si le password ne match pas de caractère spéciaux ("$","&","@", etc..)on indique que le password doit contenir caractère special
+  if(!password.value.match(carSpeciaux)){
+      erreur +="<li>Doit contenir un Caractère spécial !!!!!</li>";
+  }
+
+  //Petit check si la variable erreur n'est pas vide, on affiche les erreur dans la <li></li> sous le form
+  if(erreur !== ""){
+      resultatPassword.innerHTML = "MDP : <ul>" + erreur + "</ul>";
+      resultatPassword.style.border = "2px solid red";
+  }
+  else{
+      resultatPassword.innerHTML = "MDP : VALIDE";
+      resultatPassword.style.border = "2px solid green";
+  }
+})
+
+
+
+

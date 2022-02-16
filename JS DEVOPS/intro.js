@@ -626,8 +626,58 @@
 
 
 // ——————————————————————————————————————————————————————————————————————
-//
-// 
+
+// class CompteBancaire {
+//     constructor(titulaire){
+//         this.titulaire = titulaire; 
+//         this.solde = 0 
+//     }
+  
+//     crediter(montant){
+//         this.solde += montant;
+//         console.log(`Ajout de ${montant} pour le compte de ${this.titulaire}`)
+//     }
+  
+//     retirer(montant){
+//         try{
+//             if(this.solde < montant){
+//                 throw this.titulaire + "retrait de : " + montant + " REFUSED avec un solde de" + this.solde;
+//             }
+//             this.solde -= montant;
+//             console.log("retrait de " + montant + 'pour' + this.titulaire )
+//         }
+//         catch(error){
+//             console.log("Mon error custom ---> "+error)
+//         }
+//     }
+  
+//     affichage(){
+//         return 'titulaire : ' + this.titulaire + 'solde : ' + this.solde;
+//     }
+  
+//     virer(montant, personne){
+//         personne.crediter(montant);
+//         this.retirer(montant);
+//     }
+//   }
+//   const lesComptes = {
+//     "Alex" : new CompteBancaire("Alex"),
+//     "Clovis" : new CompteBancaire("Clovis"),
+//     "Marco" : new CompteBancaire("Marco"),
+//   }  
+//   for(let element in lesComptes){
+//     lesComptes[element].crediter(1000)
+//   }
+//   lesComptes['Alex'].retirer(100);
+  
+//   lesComptes['Marco'].virer(300, lesComptes['Clovis']);
+  
+//   lesComptes['Alex'].retirer(1200);
+  
+//   for(let unTruc in lesComptes){
+//     lesComptes[unTruc].affichage()
+//   }
+
 // ——————————————————————————————————————————————————————————————————————
 
 // EXO REGEX pt1
@@ -660,3 +710,84 @@
 
 
 
+const login = document.querySelector("#login");
+const password = document.querySelector("#password");
+const resultatPassword = document.querySelector("#resultatPassword");
+
+login.addEventListener("keyup", function(){
+
+    
+    let maRegex = /^[a-z0-9._-]+@[a-z0-9._-]+\.[a-z]{2,6}$/;
+    
+    if(!maRegex.test(login.value)){
+        console.log(login.value);
+        login.style.backgroundColor = "red";
+    }
+    else{
+        login.style.backgroundColor = "green";
+    }
+});
+
+
+
+
+// EXO Regex Part 2 : test du MPD
+
+// On va mettre en place un addEventListener qui surveille le clavier de l'utilisateur, pour le password 
+// On va utiliser la ƒ° match()
+// L'idée sera de cumuler des msg d'erreur au sein de la div avec l'id resultatPassword, les message d'erreur dans une liste 
+
+// Si la longueur de la valeur de l'input est inférieur à 6 
+// alors on indique dans la div que le mdp est trop court 
+
+// Si la longueur de la valeur de l'input est inférieur à 8 
+// alors on indique dans la div que le mdp est trop long 
+
+// Si le password ne contient pas de caractères spéciaux 
+// alors on indique dans la div que le mdp doit contenir des caractères spéciaux
+
+// Si le password ne contient pas de caractères décimaux 
+// alors on indique dans la div que le mdp doit contenir au - un chiffre
+
+// Si le password n'est pas valide 
+// la div resultatPassword doit avoir des border en rouge 
+
+// Si le password est valide 
+// la div resultatPassword doit avoir des border en vert
+
+
+
+
+password.addEventListener("keyup", function(){
+
+    
+    let laRegex = /^[\w!#$%&?*"]{6,8}$/;
+    let carDecimal = /\d/;
+    let carSpeciaux = /[!#$%&?*"]/;
+    let erreur = "";
+
+    if(!password.value.match(laRegex)){
+        console.log(password.value);
+        password.style.backgroundColor = "red";
+    }
+    else{
+        password.style.backgroundColor = "green";
+    }
+
+    if(password.value.length < 6){
+        resultatPassword.innerHTML = "MDP : <ul>" + "mdp trop court" + "</ul>";
+    }
+    else if(password.value.length > 8){
+        resultatPassword.innerHTML = "MDP : <ul>" + "erreur mdp trop long" + "</ul>";
+    }
+    else{
+        resultatPassword.innerHTML = "MDP : <ul>" + "mdp ok" + "</ul>";
+    }
+
+    if(!password.value.match(carSpeciaux)){
+        resultatPassword.innerHTML = "MDP : <ul>" + "le mdp doit contenir un caracteres special " + "</ul>";
+    }
+    else if(!password.value.match(carDecimal)){
+        resultatPassword.innerHTML = "MDP : <ul>" + "error le mdp doit avoir 1 chiffre" + "</ul>";
+    }
+});
